@@ -1,10 +1,15 @@
 import { Component, Fragment } from "react";
 import "./App.css";
+import ChildComponent from "./components/ChildComponent";
+import Button from "./components/Button";
+import TeenagerComponent from "./components/TeenagerComponent";
+import PersonComponent from "./components/PersonComponent";
 
 // 1 extender de Component
 class App extends Component {
   state = {
     counter: 0,
+    darkMode: false,
   };
 
   handleClick = (type) => {
@@ -24,7 +29,11 @@ class App extends Component {
     return (
       // React fragment
       <>
-        <h3>React con class components 👴🏽</h3>
+        <h3
+          style={!this.state.darkMode ? { color: "white" } : { color: "red" }}
+        >
+          React con class components 👴🏽
+        </h3>
         <div className="App">
           <div style={{ fontSize: 25, color: "yellow" }}>
             {/* Objeto */}
@@ -37,12 +46,12 @@ class App extends Component {
           </div>
         </div>
 
-        {/* Conditional IF */}
-        {/* if(state.counter > 4) {} */}
+        {/* Conditional IF 
+        if(state.counter > 4) {} 
         {this.state.counter > 4 && <p>Ya puedes ir al kinder</p>}
 
-        {/* CONDITIONAL IF ELSE */}
-        {/* condicion ? verdadero : false */}
+        {/* CONDITIONAL IF ELSE 
+        {/* condicion ? verdadero : false 
 
         {this.state.counter > 12 ? (
           <>
@@ -51,6 +60,7 @@ class App extends Component {
         ) : (
           <h5> Estas pequeño</h5>
         )}
+        */}
 
         {/* EJERCICIO 
           MOSTRAR EL SIG MENSAJE CUANDO SEAS MAYOR DE EDAD (>+ 18) YA ERES MAYOR DE EDAD
@@ -60,11 +70,23 @@ class App extends Component {
         */}
 
         {this.state.counter >= 18 ? (
-          <p> YA ERES MAYOR DE EDAD 🍻</p>
+          <PersonComponent />
         ) : this.state.counter < 18 && this.state.counter >= 12 ? (
-          <p> ERES UN ADOLESCENTE 📕</p>
+          <TeenagerComponent />
         ) : (
-          <p> ERES UN NIñO</p>
+          <>
+            <ChildComponent />
+            {/* propHtml = valor */}
+            {/* propCualquierNombre = 'hola' || state */}
+            <Button
+              age={this.state.counter}
+              style={this.state.darkMode}
+              incrementCounter={(value) =>
+                console.log(`valor de incremento ${value}`)
+              }
+            />
+            {/* <button>Boton de html</button> */}
+          </>
         )}
         {/*  IF ELSE IF ELSE */}
       </>
@@ -73,3 +95,5 @@ class App extends Component {
 }
 
 export default App;
+
+

@@ -1,0 +1,30 @@
+import React from 'react'
+
+const FormComponent = ({handleChange}) => {
+    return (
+    <div>
+    <h2> Crear Badge</h2>
+    <form>
+        <div className='form-group'>
+            <label htmlFor="firstName">Primer Nombre</label>
+            <input type="text" name= "firstName" className="form-control" onChange={handleChange}/>
+        </div>
+        <div className='form-group'>
+            <label htmlFor="firstName">Apellido</label>
+            <input type="text" name= "lastName" className="form-control" onChange={handleChange}/>
+        </div>
+        <div className='form-group'>
+            <label htmlFor="firstName">Rol</label>
+            <input type="text" name= "jobTitle" className="form-control" onChange={handleChange}/>
+        </div>
+        <div className='form-group'>
+            <label htmlFor="Username">Username</label>
+            <input type="text" name= "username" className="form-control" onChange={handleChange}/>
+        </div>
+    </form>
+</div>
+)
+}
+
+
+export default FormComponent
